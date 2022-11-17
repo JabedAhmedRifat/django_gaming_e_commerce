@@ -17,6 +17,8 @@ def _cart_id(request):
 
 def add_cart(request , product_id):
     product = Product.objects.get(id=product_id) # get the product_id
+
+    # variation
     product_variation =[]
     if request.method == 'POST':
         for item in request.POST:
@@ -31,6 +33,7 @@ def add_cart(request , product_id):
 
 
     # product = Product.objects.get(id=product_id) # get the product_id
+    # cart here
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request)) # get the cart using cart_id present in the session
     except Cart.DoesNotExist:
@@ -39,6 +42,8 @@ def add_cart(request , product_id):
         )
     cart.save()
 
+
+    # cart item here
     is_cart_item_exists = CartItem.objects.filter(product=product , cart=cart).exists()
     if is_cart_item_exists:
         cart_item = CartItem.objects.filter(product=product, cart=cart)
