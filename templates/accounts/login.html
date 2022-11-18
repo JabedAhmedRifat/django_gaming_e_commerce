@@ -7,6 +7,18 @@
 <section class="section-conten padding-y" style="min-height:84vh">
 
 <!-- ============================ COMPONENT LOGIN   ================================= -->
+
+{% if request.GET.command == 'verfication' %}
+
+<div class="container mx-auto alert alert-info text-center" role='alert'style="max-width: 1020px; margin-top:100px;">
+Thank you for registering with us. We have sent you a verification email to your email address [{{request.GET.email}}]. Please verify it.
+<br><br>
+Already verified? <a href="{% url 'login' %}">Login</a>
+</div>
+
+{% else %}
+
+
 	<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
 
       <div class="card-body">
@@ -35,7 +47,7 @@
      <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
      <br><br>
 <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
-
+{% endif %}
 
 </section>
 
