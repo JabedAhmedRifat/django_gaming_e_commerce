@@ -145,5 +145,37 @@ def forgotPassword(request):
 
 
 
-def resetpassword_validate(request):
-    return HttpResponse('ok')
+def resetpassword_validate(request, uidb64 ,token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError , ValueError , OverflowError , Account.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user , token):
+        request.session['uid'] = uid
+        messages.success(request, "please reset your password")
+        return redirect ("resetPassword")
+    else:
+        messages.error(request, "this link has been expired")
+        return redirect('login')
+
+def resetPassword(request):
+    if request.method == 'POST':
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password == confirm_password:
+            uid = request.session.get('uid')
+            user = Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Password reset successful')
+            return redirect('login')
+
+        else:
+            messages.error(request, "password do not match!")
+            return redirect('resetPassword')
+
+    else:
+        return render (request, 'accounts/resetPassword.html')
