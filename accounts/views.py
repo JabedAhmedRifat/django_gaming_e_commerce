@@ -36,7 +36,11 @@ def register(request):
             user.phone_number = phone_number
             user.save()
 
-
+            # Create a user profile
+            profile = UserProfile()
+            profile.user_id = user.id
+            profile.profile_picture = 'default/default-user.png'
+            profile.save()
 
             # USER ACTIVATION
             current_site = get_current_site(request)
@@ -169,10 +173,12 @@ def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     orders_count = orders.count()
 
-    try:
-        userprofile = UserProfile.objects.get(user_id=request.user.id)
-    except UserProfile.DoesNotExist:
-        userprofile = None
+    userprofile = UserProfile.objects.get(user_id=request.user.id)
+
+    # try:
+    #     userprofile = UserProfile.objects.get(user_id=request.user.id)
+    # except UserProfile.DoesNotExist:
+    #     userprofile = None
 
 
     context = {
