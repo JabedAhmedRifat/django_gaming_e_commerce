@@ -93,13 +93,13 @@ class Account(AbstractBaseUser):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE) # one to one usually for only one profile for one person, but in foreignkey on person many profile
-    address_line_1 = models.CharField(blank=True,max_length=200)
-    address_line_2 = models.CharField(blank=True,max_length=200)
-    profile_picture = models.ImageField(blank=True,upload_to='userprofile')
-    city = models.CharField(blank=True,max_length=30)
-    state = models.CharField(blank=True,max_length=30)
-    country = models.CharField(blank=True,max_length=30)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    address_line_1 = models.CharField(blank=True, max_length=100)
+    address_line_2 = models.CharField(blank=True, max_length=100)
+    profile_picture = models.ImageField(blank=True, upload_to='userprofile')
+    city = models.CharField(blank=True, max_length=20)
+    state = models.CharField(blank=True, max_length=20)
+    country = models.CharField(blank=True, max_length=20)
 
     def __str__(self):
         return self.user.first_name

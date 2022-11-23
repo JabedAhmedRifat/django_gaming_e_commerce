@@ -1,22 +1,21 @@
-from django.shortcuts import render,redirect , get_object_or_404
-from .forms import RegistrationForm , UserForm, UserProfileForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import RegistrationForm, UserForm, UserProfileForm
 from .models import Account, UserProfile
-from django.contrib import messages ,auth
+from orders.models import Order,OrderProduct
+from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from orders.models import Order ,OrderProduct
 
-
-# VERIFICATION EMAIL
+# Verification email
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode , urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 
 from carts.views import _cart_id
-from carts.models import Cart , CartItem
+from carts.models import Cart, CartItem
 import requests
 
 # Create your views here.
@@ -167,15 +166,20 @@ def activate(request , uidb64 ,token):
 
 @login_required(login_url = 'login')
 def dashboard(request):
-    orders = Order.objects.order_by("-created_at").filter(user_id=request.user.id , is_ordered=True)
+    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     orders_count = orders.count()
-    userprofile = UserProfile.objects.get(user_id=request.user.id)
 
-    context ={
-        'orders_count' : orders_count,
+    try:
+        userprofile = UserProfile.objects.get(user_id=request.user.id)
+    except UserProfile.DoesNotExist:
+        userprofile = None
+
+
+    context = {
+        'orders_count': orders_count,
         'userprofile': userprofile,
     }
-    return render(request, 'accounts/dashboard.html',context)
+    return render(request, 'accounts/dashboard.html', context)
 
 
 
@@ -224,6 +228,7 @@ def resetpassword_validate(request, uidb64 ,token):
     else:
         messages.error(request, "this link has been expired")
         return redirect('login')
+
 
 def resetPassword(request):
     if request.method == 'POST':

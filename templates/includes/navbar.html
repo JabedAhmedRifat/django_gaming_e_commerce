@@ -37,7 +37,7 @@
   </div>
   <div class="col-lg col-sm col-md col-6 flex-grow-0">
     <div class="category-wrap dropdown d-inline-block float-right">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bars"></i> All category
       </button>
       <div class="dropdown-menu">
@@ -49,7 +49,7 @@
       </div>
     </div>  <!-- category-wrap.// -->
   </div> <!-- col.// -->
-  <a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
+  <a href="{% url 'store' %}" class="btn btn-outline-secondary">Store</a>
   <div class="col-lg  col-md-6 col-sm-12 col">
 
     <form action="{%  url 'search' %}" class="search" method='GET'>
@@ -57,7 +57,7 @@
           <input type="text" class="form-control" style="width:60%;" placeholder="Search" name="keyword">
 
           <div class="input-group-append">
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-secondary" type="submit">
               <i class="fa fa-search"></i>
             </button>
           </div>

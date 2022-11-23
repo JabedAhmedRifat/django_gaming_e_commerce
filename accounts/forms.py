@@ -1,5 +1,6 @@
 from django import forms
-from .models import Account , UserProfile
+from .models import Account, UserProfile
+
 
 
 class RegistrationForm(forms.ModelForm):
@@ -47,22 +48,18 @@ class UserForm(forms.ModelForm):
         model = Account
         fields = ('first_name', 'last_name', 'phone_number')
 
-     #adding css for looking good
     def __init__(self, *args, **kwargs):
-        super (UserForm, self).__init__( *args, **kwargs)
+        super(UserForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'form-control' #adding css for looking good
-
-
+            self.fields[field].widget.attrs['class'] = 'form-control'
 
 class UserProfileForm(forms.ModelForm):
-    profile_picture = forms.ImageField(required=False , error_messages = {'invalid':{"image files only"}} , widget=forms.FileInput)
+    profile_picture = forms.ImageField(required=False, error_messages = {'invalid':("Image files only")}, widget=forms.FileInput)
     class Meta:
         model = UserProfile
-        fields = ('address_line_1' , 'address_line_2', 'city', 'state', 'country', 'profile_picture')
+        fields = ('address_line_1', 'address_line_2', 'city', 'state', 'country', 'profile_picture')
 
-    # for look properly
     def __init__(self, *args, **kwargs):
-        super (UserProfileForm, self).__init__( *args, **kwargs)
+        super(UserProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'form-control' #adding css for looking good
+            self.fields[field].widget.attrs['class'] = 'form-control' #adding for css only
