@@ -73,7 +73,7 @@
 				{% if single_product.stock <= 0 %}
 					<h5 class='text-danger'>Out of Stock</h5>
 					{% else %}
-				 		<button type ="submit"  class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+				 		<button type ="submit"  class="btn btn-dark"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
 
 					{% endif %}
 
@@ -122,7 +122,7 @@
 			<br>
 			{% if user.is_authenticated %}
 				{% if orderproduct %}
-					<input type="submit" name="" value="Submit Review" class="brn btn-primary">
+					<input type="submit" name="" value="Submit Review" class="btn btn-dark">
 				{% else %}
 					<p>You must purchase this product to  post a review.</p>
 				{% endif %}
