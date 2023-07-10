@@ -10,7 +10,6 @@
 ![categorywise product listed](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/52ac265d-4773-4756-81f1-67639335d34f)
 ![change password](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/9aacb04d-eb1d-4b54-b88b-b182bafad99f)
 ![checkout](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/6deebc93-c0a8-4ef2-8633-cff532121364)
-![clearance](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/59a1c8eb-0606-4ffa-ba6a-85cb673d861b)
 ![dashboard](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/fd01f78a-612e-47a3-88a8-e30716f72744)
 ![Edit Profile](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/ce9a5f26-4dcc-4872-aac3-ee1696680bf2)
 ![forget password](https://github.com/JabedAhmedRifat/django_gaming_e_commerce/assets/59837168/a8961563-d6bf-4c9b-8947-0e5faffe0e85)
@@ -69,5 +68,6 @@ python manage.py runserver
 ```
 
 ## Where to find Me
-Like Me on [Facebook](https://www.facebook.com/jabedahmed.rifat))
+visit My [linkedin](https://www.linkedin.com/in/md-jabed-ahmed-583980181/)
+ [Facebook](https://www.facebook.com/jabedahmed.rifat))
 Or visit My [Website](https://jabedahmedrifat.github.io/jabed/)
