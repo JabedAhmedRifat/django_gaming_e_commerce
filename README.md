@@ -53,7 +53,7 @@ Django-ecommerce is an open-source ecommerce platform built on the Django Web Fr
 **1.clone Repository & Install Packages**
 ```sh
 git@github.com:JabedAhmedRifat/django_gaming_e_commerce.git
-pip install -r requirements.txt
+
 ```
 **2.Setup Virtualenv**
 ```sh
